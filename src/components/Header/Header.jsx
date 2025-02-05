@@ -6,10 +6,8 @@ import { useContext } from "react";
 
 
 export const Header = () => {
-  const usuario = useContext(UserContext)
+  const {data} = useContext(UserContext)
 
-  console.log(usuario);
-  
 
   return (
     <header className={styles.header}>
@@ -17,9 +15,14 @@ export const Header = () => {
         <Link className={styles.logo} to="/" aria-label="Dogs - Home">
           <img src={dogHeader} alt="dog" />
         </Link>
-        <Link className={styles.login} to="/login">
-          Login / Criar
-        </Link>
+        {data ? (<Link className={styles.login} to="/conta">
+        
+       {data.nome}
+      </Link>) : ( <Link className={styles.login} to="/login">
+        
+        Login / Criar
+      </Link>)}
+       
       </nav>
     </header>
   );
