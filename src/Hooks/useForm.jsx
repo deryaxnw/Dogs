@@ -14,12 +14,12 @@ const types = {
 
 export const useForm = (type) => {
   const [value, setValue] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
 
 
 
     function validate(value){
-        if(type === undefined) return true;
+        if(type === false) return true;
         if(value.length === 0) {
             setError('preencha um valor')
             return false;
@@ -27,14 +27,14 @@ export const useForm = (type) => {
             setError(types[type].messege);
             return false
         } else {
-            setError('')
+            setError(null)
             return true
         }
     }
 
 
   function onChange({target}){
-    validate(target.value)
+   if(error) validate(target.value)
     setValue(target.value)
   }
 
