@@ -5,6 +5,8 @@ import { LoginPasswordLost } from "./LoginPasswordLost";
 import { LoginPasswordReset } from "./LoginPasswordReset";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../Hooks/UserContext";
+import styles from './Login.module.css'
+
 
 export const Login = () => {
   const { login } = useContext(UserContext);
@@ -17,12 +19,16 @@ export const Login = () => {
   }, [login, navigate]);
   return (
     <>
-      <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="criar" element={<LoginCreate />} />
-        <Route path="perdeu" element={<LoginPasswordLost />} />
-        <Route path="resetar" element={<LoginPasswordReset />} />
-      </Routes>
+      <section className={styles.login}>
+        <div  className={styles.forms}>
+          <Routes>
+            <Route path="/" element={<LoginForm />} />
+            <Route path="criar" element={<LoginCreate />} />
+            <Route path="perdeu" element={<LoginPasswordLost />} />
+            <Route path="resetar" element={<LoginPasswordReset />} />
+          </Routes>
+        </div>
+      </section>
     </>
   );
 };
