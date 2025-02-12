@@ -8,7 +8,11 @@ const types = {
 
         messege: 'Preencha um email válido'
     },
-        
+      
+    password: {
+      regex: /^[a-zA-Z0-9!@#$%^&*]{6,16}$/,
+      messege: 'A senha precisa conter ao menos 6 digitos, 1 número e um caracter "especial"'
+    }
 } 
 
 
