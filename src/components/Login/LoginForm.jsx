@@ -5,6 +5,12 @@ import { Button } from "../Forms/Button";
 import { useForm } from "../../Hooks/useForm";
 import { useContext } from "react";
 import { UserContext } from "../../Hooks/UserContext";
+import { Error } from "../Help/Error";
+import styles from "./LoginForm.module.css";
+// import stylesbtn from "../Forms/Button.module.css";
+
+
+
 
 export const LoginForm = () => {
   const username = useForm();
@@ -21,9 +27,9 @@ export const LoginForm = () => {
   }
 
   return (
-    <section>
-      <h1>Login</h1>
-      <form action="" onSubmit={handleSubmit}>
+    <section className="anime-left">
+      <h1 className="title">Login</h1>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <Input label="Usuário" type="text" name="username" {...username} />
         <Input label="Senha" type="password" name="password" {...password} />
         {loading ? (
@@ -31,9 +37,18 @@ export const LoginForm = () => {
         ) : (
           <Button>Entrar</Button>
         )}
-        {erro && <p>{erro}</p>}
+        <Error error={erro} />
       </form>
-      <Link to="/login/criar">Cadastro</Link>
+      <Link className={styles.perdeu} to="/login/perdeu">
+        Perdeu a Senha?
+      </Link>
+      <div className={styles.cadastro}>
+        <h2 className={styles.subtitle}>Cadastre-se</h2>
+        <p>Ainda não possui conta? Cadastre no site.</p>
+        <Link  className={styles.button} to="/login/criar">
+          Cadastro
+        </Link>
+      </div>
     </section>
   );
 };
