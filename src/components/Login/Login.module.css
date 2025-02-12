@@ -1,0 +1,51 @@
+.login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    gap: 2rem;
+}
+
+.login::before{
+    display: block;
+    content: '';
+    background: url("../../assets/cachorro.jpg") no-repeat center center;
+    object-fit: cover;
+    background-size: cover;
+}
+
+
+
+.login {
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: login .3s forwards;
+  }
+  
+  @keyframes login {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
+
+
+
+
+.forms {
+    max-width: 28rem;
+    padding: 1rem;
+}
+
+@media (max-width: 40rem){
+    .login {
+        grid-template-columns: 1fr;
+    
+    }
+    .login::before {
+        display: none;
+    }
+
+    .forms {
+        max-width: 100%;
+    }
+}
