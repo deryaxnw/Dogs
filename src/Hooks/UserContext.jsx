@@ -13,7 +13,7 @@ export const UserStorage = ({ children }) => {
   const [login, setLogin] = useState(null);
   const [loading, setLoading] = useState(false);
   const [erro, setError] = useState(null);
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const userLogout = useCallback( async function userLogout() {
     setData(null);
@@ -21,8 +21,7 @@ export const UserStorage = ({ children }) => {
     setLoading(false);
     setLogin(false);
     window.localStorage.removeItem("token");
-    navigate('/login')
-  }, [navigate])
+  }, [])
 
 
   async function getUser(token) {
@@ -71,7 +70,7 @@ export const UserStorage = ({ children }) => {
         } finally {
           setLoading(false);
         }
-      }
+      } 
     }
     autoLogin();
   }, [userLogout, login]); // Agora depende de login para evitar loops
