@@ -1,5 +1,5 @@
-import { use, useContext, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { use, useContext, useEffect, useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../../Hooks/UserContext";
 import feedPhotos from "../../assets/feed.svg";
 import exit from "../../assets/exit.svg";
@@ -20,15 +20,28 @@ export const UserHeaderNav = () => {
     navigate("/login");
   }
 
+   const pathname = useLocation();
+
+   useEffect(() => {
+    setMobileMenu(false)
+   }, [pathname])
+
   return (
     <>
       {mobile && (
         <button
           aria-label="menu"
+          className={`${styles.mobileButton} ${
+            mobileMenu && styles.mobileButtonActive
+          }`}
           onClick={() => setMobileMenu(!mobileMenu)}
         ></button>
       )}
-      <nav className={styles.nav}>
+      <nav
+        className={`${mobile ? styles.navMobile : styles.nav} ${
+          mobileMenu && styles.navMobileActive
+        }`}
+      >
         <NavLink to="/conta" end>
           <img src={feedPhotos} alt="feed" />
           {mobile && "Minhas Fotos"}
@@ -42,8 +55,8 @@ export const UserHeaderNav = () => {
           {mobile && "Adicionar"}
         </NavLink>
         <button onClick={userLogout}>
-          {mobile && "Sair"}
           <img src={exit} alt="exit" />
+          {mobile && "Sair"}
         </button>
       </nav>
     </>
