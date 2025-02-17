@@ -18,7 +18,7 @@ export const Header = () => {
         {data ? (<Link className={styles.login} to="/conta">
         
        {data.nome}
-       <button onClick={userLogout}>Sair</button>
+       {/* <button onClick={userLogout}>Sair</button> */}
       </Link>) : ( <Link className={styles.login} to="/login">
         
         Login / Criar
