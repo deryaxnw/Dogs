@@ -2,10 +2,11 @@
   box-sizing: border-box;
 }
 
+
+
 body {
-  width: 1420px;
+  /* width: 100%; */
   padding: 4rem;
-  /* margin: 0px; */
   color: #333;
   --type-first: Helvetica, Arial, sans-serif;
   --type-second: 'Spectral', Georgia;
