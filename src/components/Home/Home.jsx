@@ -1,8 +1,10 @@
+import { Feed } from "../Feed/Feed"
+
 
 export const Home = () => {
     return ( 
-        <div>
-           <p>Home</p>
-        </div>
+      <section className="container mainContainer">
+        <Feed/>
+      </section>
     );
 }
